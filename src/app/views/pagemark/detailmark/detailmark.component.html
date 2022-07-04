@@ -1,0 +1,73 @@
+
+<div class="details__mark container mt-5">
+  <!-- Content here -->
+<p class="mt-lg-5">detailmark works!</p>
+<p class="mt-lg-5" style="color: white" >detailmark works!</p>
+  <div class="row mt-2 mb-2">
+  <div class="col-3">
+    <select class="custom-select" #year >
+      <option selected>Chọn năm học</option>
+      <option *ngFor="let namhoc of listNamHocs" value="{{namhoc.id}}">{{namhoc.year}}</option>
+    </select>
+    <button class="btn btn-info" (click)="changeMark(year.value)"> Xem Điểm</button>
+  </div>
+  <div class="col-3">
+
+  </div>
+  </div>
+  <div class="d-flex justify-content-center">
+
+
+    <div class="card w-50 mb-3">
+      <h5 class="card-header">Học kì 1</h5>
+      <div class="card-body">
+        <table class="table">
+          <thead class="thead-dark">
+          <tr >
+            <th scope="col">Môn học</th>
+            <th scope="col">Điểm giữa kì </th>
+            <th scope="col">Điểm cuối kì</th>
+            <th scope="col">Điểm trung bình</th>
+          </tr>
+          </thead>
+          <tbody *ngFor ="let diem of thisData">
+          <!--<p>{{diem.hocKiHocSinh.hocKi.name.toLowerCase()}}</p>-->
+          <tr *ngIf="diem.hocKiHocSinh.hocKi.name.toLowerCase()=='học kì 1'">
+            <th scope="row">{{diem.monHoc.ten}}</th>
+            <td>{{diem.diemGiuaKy}}</td>
+            <td>{{diem.diemCuoiKy}}</td>
+            <td>{{calculatorMark(diem.diemGiuaKy,diem.diemCuoiKy,diem.monHoc.ten)}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card w-50 ml-4 mb-3">
+      <h5 class="card-header">Học kì 2</h5>
+      <div class="card-body">
+        <table class="table">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">Môn học</th>
+            <th scope="col">Điểm giữa kì </th>
+            <th scope="col">Điểm cuối kì</th>
+            <th scope="col">Điểm trung bình</th>
+          </tr>
+          </thead>
+          <tbody *ngFor ="let diem of thisData">
+          <!--<p>{{diem.hocKiHocSinh.hocKi.name.toLowerCase()}}</p>-->
+          <tr *ngIf="diem.hocKiHocSinh.hocKi.name.toLowerCase()=='học kì 2'">
+            <th scope="row">{{diem.monHoc.ten}}</th>
+            <td>{{diem.diemGiuaKy}}</td>
+            <td>{{diem.diemCuoiKy}}</td>
+            <td>{{calculatorMark(diem.diemGiuaKy,diem.diemCuoiKy,diem.monHoc.ten)}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-success mb-3" routerLink="/home">Trở về trang chủ</a>
+  </div>
+

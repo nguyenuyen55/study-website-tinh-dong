@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white" >detailmark works!</p>
+  <div class="row ">
+    <h3 style="text-align: center" >Danh Sách Lớp  </h3>
+   <div class="col-2">
+     <button class="btn btn-success" (click)="openDialogCreate()">Tạo lớp</button>
+   </div>
+
+    <div class="row mt-2 mb-2">
+      <div class="col-3">
+        <select class="custom-select" (change)="setValueNamHoc($event);handlerOnChangeLop()">
+          <option selected>Chọn năm học</option>
+          <option *ngFor="let namhoc of listNamHocs" value="{{namhoc.year}}">{{namhoc.year}}</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <select class="custom-select" (change)="setValueKhoi($event);handlerOnChangeLop()">
+          <option selected>Chọn khối</option>
+          <option *ngFor="let khoi of listKhois" value="{{khoi.id}}">{{khoi.ten}}</option>
+        </select>
+      </div>
+    </div>
+    <div style="height: 300px" *ngIf="listLops.length==0" ></div>
+    <table class="table" *ngIf="listLops.length!=0">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">
+          Thầy cô chủ nhiệm
+        </th>
+        <th scope="col">Lớp</th>
+        <th scope="col">Năm học</th>
+        <th scope="col">Lên lớp</th>
+        <th scope="col">Xem chi tiết</th>
+      </tr></thead>
+      <tbody>
+      <tr *ngFor="let lop of listLops;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{lop.coChuNhiem}}</td>
+        <td>{{lop.tenLop}}</td>
+        <td>{{lop.niemKhoa}}</td>
+        <td><button class="btn btn-info" (click)="upClass(lop)"><i class="bi bi-arrow-up-circle"></i></button></td>
+        <td><button class="btn btn-warning"  (click)="moveListStudentByClass(lop.idLop)"><i class="bi bi-eye"></i></button></td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="height: 300px">
+
+  </div>
+</div>

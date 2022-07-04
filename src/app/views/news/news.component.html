@@ -1,0 +1,31 @@
+<div id="news" class="news-container">
+    <div class="container">
+        <div class="row">
+            <div class="news-primary col-12	col-sm-12	col-md-12 col-lg-10	col-xl-10	col-xxl-10">
+                <h4 class="news-primary-heading"><i class="bi bi-info-circle me-3"></i> {{topNews[0].tieuDe}} </h4>
+                <p class="news-primary__content">
+                    <img src="{{topNews[0].images[0].linkimage}}"  alt="Loading...">
+                    <br />
+                    {{topNews[0].noiDung}}
+                </p>
+                <div class="news-line"></div>
+                <div class="news-primary__image" *ngFor="let img of listImgTopNews; let i = index">
+                    <img src="{{img.linkimage}}" alt="Loading...">
+                    <span> Hình: {{i+1}}</span>
+                </div>
+            </div>
+            <div class="news-extra col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2">
+                <header class="header-orther-news">
+                    Thông tin khác
+                </header>
+                <div class="row">
+                    <div class="news-extra__content col-12	col-sm-12 col-md-6 col-lg-12 col-xl-12 col-xxl-12" id="{{news.id}}" *ngFor="let news of listNews"
+                        (click)="clickNewsExtra($event)">
+                        <img id="{{news.id}}" src="{{news.images[0].linkimage}}" alt="Loading...">
+                        <h4 id="{{news.id}}">{{news.tieuDe}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

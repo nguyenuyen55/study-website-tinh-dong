@@ -1,0 +1,16 @@
+<div class="detail-lession-container">
+  <div class="container">
+    <iframe allowfullscreen="false" class="lession-video" width="100%" height="300px"
+            [src]="transform()">
+    </iframe>
+    <div class=""></div>
+    <div class="detail-lession-type"><p>{{"#"+lession[0].chuongHoc.monHoc.ten}}</p>&nbsp;<p >{{"#"+lession[0].chuongHoc.ten}}</p></div>
+    <div class="detail-lession__title">{{lession[0].ten}}</div>
+
+  </div>
+  <div class="form-group mt-2">
+    <div class=" d-flex justify-content-center">
+      <button class="btn btn-danger" mat-dialog-close > Thoát</button>
+    </div>
+  </div>
+</div>

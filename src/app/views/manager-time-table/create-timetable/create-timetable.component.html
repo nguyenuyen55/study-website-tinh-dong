@@ -1,0 +1,105 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white">detailmark works!</p>
+  <div class="row">
+    <div class="col-3">
+      <select class="custom-select" (change)="setValueNamHoc($event);handlerOnChangeLop()">
+        <option selected>Chọn năm học</option>
+        <option *ngFor="let namhoc of listNamHocs" value="{{namhoc.id}}">{{namhoc.year}}</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="custom-select" (change)="setValueKhoi($event);handlerOnChangeLop()">
+        <option selected>Chọn khối</option>
+        <option *ngFor="let khoi of listKhois" value="{{khoi.id}}">{{khoi.ten}}</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="custom-select" (change)="handlerOnChangeLopNew($event)">
+        <option selected>Chọn lớp</option>
+        <option *ngFor="let lop of listLops" value="{{lop.id}}">{{lop.ten}}</option>
+      </select>
+    </div>
+  </div>
+  <table class="schedule-table table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">/</th>
+      <th scope="col">Thứ 2</th>
+      <th scope="col">Thứ 3</th>
+      <th scope="col">Thứ 4</th>
+      <th scope="col">Thứ 5</th>
+      <th scope="col">Thứ 6</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Tiết 1</th>
+<!--      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson1" (change)="getTiet(i,lesson1,1)">-->
+<!--        <select class="custom-select" id="subjectchange{{i.id}}">-->
+<!--          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" [selected]="i.monHoc.id==mh.id">{{mh.ten}}</option>-->
+<!--        </select>-->
+<!--      </td>-->
+      <td *ngFor="let lession of lesson1;let i=index" (change)="getTiet(lesson1,lession,1,i)">
+        <select class="custom-select" id="subject1{{i}}">
+          <option *ngFor="let mh of listMonHoc"  value="{{mh.id}}" >{{mh.ten}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Tiết 2</th>
+      <td *ngFor="let lession of lesson2;let i=index" (change)="getTiet(lesson2,lession,2,i)">
+        <select class="custom-select" id="subject2{{i}}" >
+          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" >{{mh.ten}}</option>
+        </select>
+      </td>
+<!--      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson2" (change)="getTiet(i,lesson2,2)">-->
+<!--        <select class="custom-select" id="subjectchange{{i.id}}">-->
+<!--          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" [selected]="i.monHoc.id==mh.id">{{mh.ten}}</option>-->
+<!--        </select>-->
+<!--      </td>-->
+    </tr>
+    <tr>
+      <th scope="row">Tiết 3</th>
+<!--      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson3" (change)="getTiet(i,lesson3,3)">-->
+<!--        <select class="custom-select" id="subjectchange{{i.id}}">-->
+<!--          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" [selected]="i.monHoc.id==mh.id">{{mh.ten}}</option>-->
+<!--        </select>-->
+<!--      </td>-->
+      <td *ngFor="let i of [11,12,13,14,15]">
+        <select class="custom-select" >
+          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" >{{mh.ten}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Tiết 4</th>
+<!--      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson4" (change)="getTiet(i,lesson4,4)">-->
+<!--        <select class="custom-select" id="subjectchange{{i.id}}">-->
+<!--          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" [selected]="i.monHoc.id==mh.id">{{mh.ten}}</option>-->
+<!--        </select>-->
+<!--      </td>-->
+      <td  *ngFor="let i of [16,17,18,19,20]">
+        <select class="custom-select" >
+          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" >{{mh.ten}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Tiết 5</th>
+      <td *ngFor="let i of [20,21,22,23,24]">
+        <select class="custom-select"  >
+          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" >{{mh.ten}}</option>
+        </select>
+      </td>
+<!--      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson5" (change)="getTiet(i,lesson5,5)">-->
+<!--        <select class="custom-select" id="subjectchange{{i.id}}">-->
+<!--          <option *ngFor="let mh of listMonHoc" value="{{mh.id}}" [selected]="i.monHoc.id==mh.id">{{mh.ten}}</option>-->
+<!--        </select>-->
+<!--      </td>-->
+    </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" (click)="createTimeTable()">Tạo mới thời khoá biểu</button>
+</div>

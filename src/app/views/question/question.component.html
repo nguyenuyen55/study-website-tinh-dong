@@ -1,0 +1,48 @@
+<app-notification 
+[item]="currentItem"></app-notification>
+<div class="question-container">
+    <div class="container">
+        <div class="question-wrapper">
+            <div class="question-header">
+                Hỏi đáp
+            </div>
+            <form [formGroup]="form" autocomplete="off" (ngSubmit)="handlerAddQuestion()">
+                <div class="question-content">
+                    <div class="question-item">
+                        <label for="question-theme">Chủ đề:</label>
+                        <select formControlName="theme" class="form-select question-them" required>
+                            <option selected >Chọn chủ đề</option>
+                            <option value={{theme.id}} *ngFor="let theme of listTheme">{{theme.name}}</option>
+                        </select>
+                    </div>
+                    <div class="question-item">
+                        <label for="question-fullname">Họ và tên: </label>
+                        <input formControlName="name" id="question-fullname" type="text">
+                    </div>
+                    <div class="question-item">
+                        <label for="question-gmail">Gmail:</label>
+                        <input email="true" formControlName="gmail" id="question-gmail" type="text">
+                    </div>
+                    <div class="question-item">
+                        <label for="question-phone">SĐT:</label>
+                        <input formControlName="phone" id="question-phone" minlength="9" maxlength="11" type="text">
+                    </div>
+                    <div class="question-item">
+                        <label for="question-title">Tiêu đề:</label>
+                        <input formControlName="title" id="question-title" type="text">
+                    </div>
+
+                    <div class="question-item">
+                        <label for="question-content">Nội dung câu hỏi:</label>
+                        <textarea formControlName="content" name="" id="question-content" cols="30" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="question-button">
+                    <button type="submit"  (mousedown)="btnAddQuestionClick()" (mouseup)="btnRemoveQuestionClick()" (mouseleave)="btnRemoveQuestionClick()">
+                        Gửi câu hỏi
+                    </button>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>

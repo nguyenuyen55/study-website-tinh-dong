@@ -1,0 +1,30 @@
+.schedule-container{
+  margin-top: var(--heightHeader);
+  background: #CBEFFE;
+  padding-bottom: 40px;
+  .schedule-selection{
+    padding: 40px 0;
+    padding-left: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .schedule-class{
+      margin: 0 10% ;
+    }
+  }
+  .schedule-search{
+    button{
+      padding: 0 20px;
+      line-height: 40px;
+      border: 1px solid rgba(48, 48, 48, 0.3);
+    }
+    button:hover{
+      background: rgb(82, 160, 250);
+      opacity: 0.8;
+    }
+  }
+  .schedule-table {
+    background: #fff;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white">detailmark works!</p>
+  <table class="table mt-4 table-hover rounded p-3 table-bordered" *ngIf="lopHocSinhReponse!=null">
+    <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Mã học sinh</th>
+      <th scope="col">Họ và tên</th>
+      <th scope="col">Ngày sinh</th>
+      <th scope="col">Giới tính</th>
+      <th scope="col">Quê quán</th>
+      <th scope="col">Họ tên bố</th>
+      <th scope="col">Họ tên mẹ</th>
+      <th scope="col">Số điện thoại</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let hocsinh of lopHocSinhReponse.hocSinhs|paginate:{itemsPerPage:5,currentPage:p} ;  let i= index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{hocsinh.id}}</td>
+      <td>{{hocsinh.ten}}</td>
+      <td>{{hocsinh.ngaySinh}}</td>
+      <td>{{hocsinh.gioiTinh}}</td>
+      <td>{{hocsinh.diaChi}}</td>
+      <td>{{hocsinh.tenBo}}</td>
+      <td>{{hocsinh.tenMe}}</td>
+      <td>{{hocsinh.sdtBoMe}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <pagination-controls class="text-right" *ngIf="checkPagination" [directionLinks]=true [autoHide]=true
+                       [responsive]=true (pageChange)="p=$event" previousLabel="Trước"
+                       nextLabel="Sau"></pagination-controls>
+  <a class="btn btn-success" (click)="exportPDF()" *ngIf="lopHocSinhReponse!=null">Xuất ra PDF</a>
+  <div style="height: 300px">
+
+  </div>
+</div>

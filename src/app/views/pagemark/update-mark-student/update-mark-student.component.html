@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white" >detailmark works!</p>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Họ và tên</th>
+      <th scope="col">Ngày sinh</th>
+      <th scope="col">Thao tác</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let student of listHocSinh" >
+    <tr>
+      <th scope="row">{{student.id}}</th>
+      <td>{{student.ten}}</td>
+      <td>{{student.ngaySinh}}</td>
+<!--      <td><a routerLink="/updatemark/{{student.id}}" class="btn btn-success">Sửa điểm</a></td>-->
+      <td><a (click)="openDialogMark(student.id)" class="btn btn-success">Sửa điểm</a></td>
+    </tr>
+    </tbody>
+  </table>
+<!--  <div style="height: 600px" *ngIf="listLops.length==0" ></div>-->
+  <div style="height: 300px">
+
+  </div>
+</div>

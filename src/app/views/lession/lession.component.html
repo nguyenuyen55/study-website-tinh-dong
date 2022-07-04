@@ -1,0 +1,66 @@
+<div class="lession-container">
+    <div class="container">
+        <div class="section-selection">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <select class="form-select lession-select"  (change)="handlerOnChangeLession($event)">
+                        <option selected>Chọn khối</option>
+                        <option value={{e.id}} *ngFor="let e of listBlock">{{e.ten}}</option>
+                    </select>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                    <select class="form-select lession-select" (change)="handlerOnChangeSubject($event)" >
+                        <option selected>Chọn môn học</option>
+                        <option value={{e.id}} *ngFor="let e of listSubject">{{e.ten}}</option>
+                    </select>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6" (change)="handlerOnChangeChapter($event)" >
+                    <select class="form-select lession-select"  >
+                        <option selected>Chọn chương học</option>
+                        <option value={{e.id}} *ngFor="let e of listChapter">{{e.ten}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="section-search">
+            <form class="input-group">
+                    <input type="text" class="form-control section-select" placeholder="Nhập từ khoá muốn tìm kiếm" #namesearch
+                    aria-label="Nhập từ khoá muốn tìm kiếm" aria-describedby="button-addon2" >
+                <button class="btn btn-outline-secondary btn-section-search" (click)="changeValueLession(namesearch.value)" type="button" id="button-addon2">Tìm kiếm</button>
+
+            </form>
+        </div>
+        <div class="lession-list">
+            <div class="lession-list__header">
+                <button class="btn btn btn-light mt-3 lession-list__btn-filter "><i class="bi bi-filter me-3"></i>Lọc
+                </button>
+            </div>
+            <div class="lession-list__content" >
+                <div class="row">
+                    <div class="lession-list__loading col-12" *ngIf="allListLession.length === 0">
+                       {{message}}
+                    </div>
+                    <div  *ngFor="let lession of listLession |paginate:{itemsPerPage:12,currentPage:p}" class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                        <div routerLink='{{lession.id}}' class="lession__item">
+<!--                            <img src={{lessionImage}} alt="">-->
+                          <video controls>
+                            <source src="{{lession.fileVideo}}">
+                          </video>
+                            <div class="lession__item-content" >
+                                <h4 class="lession__item-title">{{lession.ten}}</h4>
+                                <div class="lession__item-type"><p href="#">{{lession.chuongHoc.monHoc.ten}}</p>&nbsp;|&nbsp;<p  href="#">{{lession.chuongHoc.ten}}</p></div>
+                                <!-- <div class="lession__item-teacher">Giáo viên: {{lession.id}}</div> -->
+                                <div class="lession__item-desc"> Mô tả: {{lession.mota}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        . <pagination-controls class="text-right" *ngIf="checkPagination" [directionLinks]=true [autoHide]=true
+                               [responsive]=true (pageChange)="p=$event" previousLabel="Trước"
+                               nextLabel="Sau"></pagination-controls>
+    </div>
+
+</div>

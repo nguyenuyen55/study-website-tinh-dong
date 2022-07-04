@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white">detailmark works!</p>
+  <div class="row d-flex justify-content-center mb-4">
+    <div class="col-3">
+      <input type="text" class="form-control" placeholder="Tìm kiếm theo tên" #ten>
+    </div>
+    <div class="col-3">
+      <select class="custom-select" *ngFor="let phongban of listphongbans" id="phong">
+        <option selected value="null">--Chọn phòng ban--</option>
+        <option value="{{phongban.id}}">{{phongban.ten}}</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <button class="btn btn-info" (click)="searchTeacher(ten.value)" >Tìm kiếm</button>
+    </div>
+    <div class="col-6">
+    </div>
+
+
+  </div>
+  <h3>DANH SÁCH GIÁO VIÊN</h3>
+  <button class="btn btn-success mt-3" (click)="openDialogCreate()">Thêm mới</button>
+  <table class="table mt-4 table-hover rounded p-3 table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Mã giáo viên</th>
+      <th scope="col">Họ và tên</th>
+      <th scope="col">Ngày sinh</th>
+      <th scope="col">Giới tính</th>
+      <th scope="col">Quê quán</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phòng ban</th>
+      <th scope="col">Chi tiết</th>
+      <th scope="col"> Sửa</th>
+      <th scope="col">Xoá</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let teacher of listgv |paginate:{itemsPerPage:5,currentPage:p};let i=index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{teacher.id}}</td>
+      <td>{{teacher.ten}}</td>
+      <td>{{teacher.ngaySinh}}</td>
+      <td>{{teacher.gioiTinh}}</td>
+      <td>{{teacher.diaChi}}</td>
+      <td>{{teacher.soDienThoai}}</td>
+      <td>{{teacher.email}}</td>
+      <td>{{teacher.phongBan.ten}}</td>
+      <td><a class="btn btn-warning" (click)="openDialogDetail(teacher.id)"><i class="bi bi-eye"></i></a></td>
+      <td><a class="btn btn-info" (click)="openDialogUpdate(teacher.id)"><i class="bi bi-pencil-square"></i></a></td>
+      <td><a style="cursor: pointer" class="btn btn-danger" (click)="openDialogDelete(teacher.id)"><i class="bi bi-trash" style="color:white;"></i></a></td>
+    </tr>
+
+    </tbody>
+  </table>
+  <pagination-controls class="text-right" *ngIf="checkPagination" [directionLinks]=true [autoHide]=true
+                       [responsive]=true (pageChange)="p=$event" previousLabel="Trước"
+                       nextLabel="Sau"></pagination-controls>
+  <div style="margin-top: 200px" *ngIf="!checkPagination"></div>
+</div>
+
+
+
+

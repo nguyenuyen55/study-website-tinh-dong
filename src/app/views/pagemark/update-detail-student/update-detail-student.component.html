@@ -1,0 +1,68 @@
+<div class="container mt-2">
+  <div class="d-flex justify-content-center">
+    <div class="card w-50 mb-3">
+      <h5 class="card-header">Học kì 1</h5>
+      <div class="card-body">
+        <table class="table">
+          <thead class="thead-dark">
+          <tr >
+            <th scope="col">Môn học</th>
+            <th scope="col">Điểm giữa kì </th>
+            <th scope="col">Điểm cuối kì</th>
+            <th scope="col">Thao tác</th>
+          </tr>
+          </thead>
+          <tbody *ngFor ="let diem of thisData;let i=index">
+          <!--<p>{{diem.hocKiHocSinh.hocKi.name.toLowerCase()}}</p>-->
+          <tr *ngIf="diem.hocKiHocSinh.hocKi.name.toLowerCase()=='học kì 1'">
+            <th scope="row">{{diem.monHoc.ten}}</th>
+            <td>
+              <input type="number" min="0" max="10" class="form-control" id="valueg{{i}}" [hidden]="checkSubjectVaild(diem.monHoc.ten)" (change)="check(i)" value="{{diem.diemGiuaKy}}">
+              <p style="color:red;" id="error{{i}}"></p>
+               </td>
+            <td> <input type="number" min="0" max="10" class="form-control"  id="valuec{{i}}" (change)="checkc(i)" value="{{diem.diemCuoiKy}}">
+              <p style="color:red;" id="errorc{{i}}"></p>
+            </td>
+            <td><button class="btn btn-success mb-3" id="button{{i}}" [disabled]="disbleButton(i)" (click)="save(i)">Lưu</button></td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card w-50 ml-4 mb-3">
+      <h5 class="card-header">Học kì 2</h5>
+      <div class="card-body">
+        <table class="table">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">Môn học</th>
+            <th scope="col">Điểm giữa kì </th>
+            <th scope="col">Điểm cuối kì</th>
+            <th scope="col">Thao tác</th>
+          </tr>
+          </thead>
+          <tbody *ngFor ="let diem of thisData ;let i=index">
+          <!--<p>{{diem.hocKiHocSinh.hocKi.name.toLowerCase()}}</p>-->
+          <tr *ngIf="diem.hocKiHocSinh.hocKi.name.toLowerCase()=='học kì 2'">
+            <th scope="row">{{diem.monHoc.ten}}</th>
+            <td>
+              <input type="number" min="0" max="10" class="form-control" id="valueg{{i}}" [hidden]="checkSubjectVaild(diem.monHoc.ten)" (change)="check(i)" value="{{diem.diemGiuaKy}}">
+              <p style="color:red;" id="error{{i}}"></p>
+            </td>
+            <td> <input type="number" min="0" max="10" class="form-control"   id="valuec{{i}}" (change)="checkc(i)" value="{{diem.diemCuoiKy}}">
+              <p style="color:red;" id="errorc{{i}}"></p>
+            </td>
+            <td><button class="btn btn-success mb-3" id="button{{i}}" [disabled]="disbleButton(i)" (click)="save(i)">Lưu</button></td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mt-2">
+    <div class=" d-flex justify-content-center">
+      <button class="btn btn-danger" mat-dialog-close> Thoát</button>
+    </div>
+  </div>
+</div>

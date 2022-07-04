@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white" >detailmark works!</p>
+<div class="schedule-content">
+
+  <h4 *ngIf="isdisplay">Giáo viên này chưa được phân lớp</h4>
+  <table class="schedule-table table table-bordered" *ngIf="!isdisplay">
+    <thead>
+    <tr>
+      <th scope="col">/</th>
+      <th scope="col">Thứ 2</th>
+      <th scope="col">Thứ 3</th>
+      <th scope="col">Thứ 4</th>
+      <th scope="col">Thứ 5</th>
+      <th scope="col">Thứ 6</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Tiết 1</th>
+      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson1">{{i.monHoc.ten}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tiết 2</th>
+      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson2">{{i.monHoc.ten}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tiết 3</th>
+      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson3">{{i.monHoc.ten}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tiết 4</th>
+      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson4">{{i.monHoc.ten}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tiết 5</th>
+      <td id="{{i.monHoc.id}}" *ngFor="let i of lesson5">{{i.monHoc.ten}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+  <div style="height: 300px">
+
+  </div>
+</div>

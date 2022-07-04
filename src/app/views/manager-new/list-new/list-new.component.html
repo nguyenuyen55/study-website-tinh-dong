@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white">detailmark works!</p>
+  <button class="btn btn-success" routerLink="/create-new">Tạo mới</button>
+  <table class="table mt-4 table-hover rounded p-3 table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Tiêu đề</th>
+      <th scope="col">Nội dung</th>
+      <th scope="col">Chi tiết</th>
+      <th scope="col"> Sửa</th>
+      <th scope="col">Xoá</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let new of listNews |paginate:{itemsPerPage:5,currentPage:p};let i =index">
+      <td>{{i + 1}}</td>
+      <td>{{new.tieuDe}}</td>
+      <td>{{new.noiDung}}</td>
+      <td><a class="btn btn-warning" (click)="openDialogDetail(new.id)"><i class="bi bi-eye"></i></a></td>
+      <td><a class="btn btn-info" routerLink="/update-new" [state]="{idnew : new.id}" ><i class="bi bi-pencil-square"></i></a></td>
+      <td><a style="cursor: pointer" class="btn btn-danger" (click)="openDialogDelete(new.id)"><i class="bi bi-trash" style="color:white;"></i></a></td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination-controls class="text-right" *ngIf="checkPagination" [directionLinks]=true [autoHide]=true
+                       [responsive]=true (pageChange)="p=$event" previousLabel="Trước"
+                       nextLabel="Sau"></pagination-controls>
+</div>

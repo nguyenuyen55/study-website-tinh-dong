@@ -1,0 +1,38 @@
+<div class="container row">
+  <div class="col-6">
+    <img width="350px" height="280" src="{{giaoVien.hinhAnh}}" alt="">
+
+  </div>
+  <div class="col-6">
+    <div class="row">
+      <div class="col-6">
+        <p>Mã Giáo Viên</p>
+        <p>Họ Và Tên</p>
+        <p>Ngày Sinh</p>
+        <p>Giới Tính</p>
+        <p>Địa Chỉ</p>
+        <p>Tên Đại Học</p>
+        <p>Số Điện Thoại</p>
+        <p>Bằng Cấp</p>
+        <p>Phòng Ban</p>
+      </div>
+      <div class="col-6">
+        <p>{{giaoVien.id}}</p>
+        <p>{{giaoVien.ten}}</p>
+        <p>{{giaoVien.ngaySinh}}</p>
+        <p>{{giaoVien.gioiTinh}}</p>
+        <p>{{giaoVien.diaChi}}</p>
+        <p>{{giaoVien.tenDaiHoc}}</p>
+        <p>{{giaoVien.soDienThoai}}</p>
+        <p>{{giaoVien.bangCap.ten}}</p>
+        <p>{{giaoVien.phongBan.ten}}</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="form-group mt-2">
+    <div class=" d-flex justify-content-center">
+      <button class="btn btn-danger" mat-dialog-close > Thoát</button>
+    </div>
+  </div>
+</div>

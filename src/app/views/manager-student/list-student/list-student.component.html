@@ -1,0 +1,87 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white">detailmark works!</p>
+
+  <h2 style="text-align: center;margin-bottom: 20px">Danh sách học sinh</h2>
+  <div class="row">
+    <div class="col-3">
+      <select class="custom-select" (change)="setValueNamHoc($event);handlerOnChangeLop()">
+        <option selected>Chọn năm học</option>
+        <option *ngFor="let namhoc of listNamHocs" value="{{namhoc.id}}">{{namhoc.year}}</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="custom-select" (change)="setValueKhoi($event);handlerOnChangeLop()">
+        <option selected>Chọn khối</option>
+        <option *ngFor="let khoi of listKhois" value="{{khoi.id}}">{{khoi.ten}}</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="custom-select" (change)="handlerOnChangeLopNew($event)">
+        <option selected>Chọn lớp</option>
+        <option *ngFor="let lop of listLops" value="{{lop.id}}">{{lop.ten}}</option>
+      </select>
+    </div>
+  </div>
+  <button class="btn btn-success mt-3" *ngIf="isDisplay" (click)="openDialogCreate()">Thêm mới</button>
+  <h4 *ngIf="isDisplayLoad">Đang kiểm tra dữ liệu vui lòng chờ vài phút</h4>
+  <div style="margin-top: 600px" [hidden]="lopHocSinhReponse!=null"></div>
+
+  <div *ngIf="lopHocSinhReponse!=null" class="row">
+    <div class="col-6 row">
+      <div class="col-6">
+        <p class="mb-2 mt-2">Cô giáo chủ nhiệm :</p>
+        <select class="form-select" #idgv>
+          <option selected>Chọn giáo viên</option>
+          <option *ngFor="let gv of listgv" [selected]="gv.id==lopHocSinhReponse!.idgv"
+                  value="{{gv.id}}">{{gv.ten}}</option>
+        </select>
+      </div>
+      <p class="mb-2 mt-2"></p>
+      <div class="col-6">
+        <button class="btn btn-info" (click)="updateGv(idgv.value)"> Sửa</button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table mt-4 table-hover rounded p-3 table-bordered" *ngIf="lopHocSinhReponse!=null">
+    <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Mã học sinh</th>
+      <th scope="col">Họ và tên</th>
+      <th scope="col">Ngày sinh</th>
+      <th scope="col">Giới tính</th>
+      <th scope="col">Quê quán</th>
+      <th scope="col">Họ tên bố</th>
+      <th scope="col">Họ tên mẹ</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">Chi tiết</th>
+      <th scope="col">Sửa</th>
+      <th scope="col">Xoá</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let hocsinh of lopHocSinhReponse.hocSinhs|paginate:{itemsPerPage:5,currentPage:p} ;  let i= index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{hocsinh.id}}</td>
+      <td>{{hocsinh.ten}}</td>
+      <td>{{hocsinh.ngaySinh}}</td>
+      <td>{{hocsinh.gioiTinh}}</td>
+      <td>{{hocsinh.diaChi}}</td>
+      <td>{{hocsinh.tenBo}}</td>
+      <td>{{hocsinh.tenMe}}</td>
+      <td>{{hocsinh.sdtBoMe}}</td>
+      <td><a class="btn btn-warning" (click)="openDialogDetail(hocsinh.id)"><i class="bi bi-eye"></i></a></td>
+      <td><a class="btn btn-info" (click)="openDialogUpdate(hocsinh.id)"><i class="bi bi-pencil-square"></i></a></td>
+      <td><a style="cursor: pointer" class="btn btn-danger" (click)="openDialogDelete(hocsinh.id)"><i
+        class="bi bi-trash" style="color:white;"></i></a></td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination-controls class="text-right" *ngIf="checkPagination" [directionLinks]=true [autoHide]=true
+                       [responsive]=true (pageChange)="p=$event" previousLabel="Trước"
+                       nextLabel="Sau"></pagination-controls>
+  <div style="margin-top: 200px" [hidden]="lopHocSinhReponse==null"></div>
+</div>

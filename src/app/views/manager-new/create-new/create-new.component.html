@@ -1,0 +1,71 @@
+<div class="container ">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white">detailmark works!</p>
+  <h3 style="text-align: center;margin-bottom: 20px">Thêm Mới Tin Tức</h3>
+  <form [formGroup]="formnew" autocomplete="off" (ngSubmit)="createNew()">
+    <!--    <div class="form-group row">-->
+    <!--      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>-->
+    <!--      <div class="col-sm-10">-->
+    <!--        <input type="password" class="form-control" id="inputPassword" placeholder="Password">-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+
+    <div class="form-group row d-flex justify-content-center">
+      <div class="form-group row col-6">
+        <label for="ten" class="col-sm-2 col-form-label">Tiêu đề </label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="tieuDe" id="ten" placeholder="Tiêu đề">
+        </div>
+        <small style="color: red;margin-left: 79px"
+               *ngIf="formnew.get('tieuDe')?.hasError('required')  && formnew.get('tieuDe')?.touched">
+          Tiêu đề không được để trống
+        </small>
+      </div>
+
+    </div>
+    <div class="form-group row d-flex justify-content-center">
+      <div class="form-group row col-6">
+        <label for="ten" class="col-sm-2 col-form-label">Nội dung</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" formControlName="noiDung" id="exampleFormControlTextarea1" rows="10"></textarea>
+        </div>
+        <small style="color: red;margin-left: 79px"
+               *ngIf="formnew.get('noiDung')?.hasError('required')  && formnew.get('noiDung')?.touched">
+          Nội dung không được để trống
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row d-flex justify-content-center">
+      <div class="form-group row col-6">
+        <label class="col-sm-2 col-form-label">Hình ảnh</label>
+        <div class="col-sm-10">
+          <input type="text" hidden formControlName="images">
+          <input type="file" multiple  class="form-control" (change)="showPreview($event)">
+        </div>
+        <small style="color: red;margin-left: 79px"
+               *ngIf="files.length==0 && displayError">
+          hình ảnh đang tải lên vui lòng chờ
+        </small>
+      </div>
+      <div class="row  ">
+        <div class="col-6">
+          <img width="350px" height="280" *ngFor="let file of files" src="{{file.link}}" alt="">
+          <p></p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group ">
+      <div class=" d-flex justify-content-center">
+        <button class="btn btn-danger" routerLink="/list-new">Trở về</button>
+        <button type="submit" class="btn btn-success ml-5">Thêm mới</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+

@@ -1,0 +1,95 @@
+
+
+<div class="question-container">
+  <div class="container">
+    <div class="question-wrapper">
+      <div class="question-header">
+     Cập nhật thông tin bài giảng
+      </div>
+      <form [formGroup]="lessionForm" autocomplete="off" (ngSubmit)="updateLession()">
+
+        <div class="question-content">
+          <div class="question-item">
+            <label for="question-fullname">Tiêu đề: </label>
+            <input class="form-control" formControlName="ten" id="question-fullname" type="text">
+
+          </div>
+          <p style="color: red;margin-left: 167px"
+             *ngIf="lessionForm.get('ten')?.hasError('required')  && lessionForm.get('ten')?.touched">
+            Tiêu đề không được để trống
+          </p>
+          <div class="question-item">
+            <label >Khối :</label>
+            <select formControlName="block" class="form-select question-them" required (change)="handlerOnChangeLession($event)">
+              <option value={{e.id}} *ngFor="let e of listBlock">{{e.ten}}</option>
+            </select>
+          </div>
+          <p style="color: red;margin-left: 167px"
+             *ngIf="lessionForm.get('block')?.hasError('required')  && lessionForm.get('block')?.touched">
+            Khối đề không được để trống
+          </p>
+          <div class="question-item">
+            <label >Môn học :</label>
+            <select formControlName="subject" class="form-select question-them" required (change)="handlerOnChangeSubject($event)" >
+              <option selected >Chọn môn</option>
+              <option value={{e.id}} *ngFor="let e of listSubject">{{e.ten}}</option>
+            </select>
+          </div>
+          <p style="color: red;margin-left: 167px"
+             *ngIf="lessionForm.get('subject')?.hasError('required')  && lessionForm.get('subject')?.touched">
+            Môn học không được để trống
+          </p>
+          <div class="question-item">
+            <label >Chương học :</label>
+            <select formControlName="idChuong" class="form-select question-them"   required>
+              <option value={{e.id}} *ngFor="let e of listChapter">{{e.ten}}</option>
+            </select>
+          </div>
+          <p style="color: red;margin-left: 167px"
+             *ngIf="lessionForm.get('idChuong')?.hasError('required')  && lessionForm.get('idChuong')?.touched">
+            Chương học không được để trống
+          </p>
+
+          <div class="question-item">
+            <label for="question-content">Mô tả về bài giảng:</label>
+            <textarea formControlName="mota" class="form-control" name="" id="question-content" cols="30" rows="4"></textarea>
+          </div>
+          <p style="color: red;margin-left: 167px"
+             *ngIf="lessionForm.get('mota')?.hasError('required')  && lessionForm.get('mota')?.touched">
+            Mô tả không được để trống
+          </p>
+          <div class="question-item">
+            <label for="question-fullname1">video đính kèm: </label>
+            <input class="form-control" formControlName="fileVideo" id="question-fullname1" type="file"  (change)="showPreview($event)">
+          </div>
+          <p style="color: red;margin-left: 167px"
+             *ngIf="lessionForm.get('fileVideo')?.hasError('required')  && lessionForm.get('fileVideo')?.touched">
+            Vui lòng chọn file video
+          </p>
+          <div class="form-group row">
+            <!--              <label class="col-sm-2 col-form-label">Hình ảnh</label>-->
+            <div class="col-sm-10 input-group">
+              <p [hidden]="!isDisplay" style="color: #2c3034">Đang tải video lên vui lòng chờ vài phút </p>
+
+              <div [hidden]="!isDisplayVideo" >
+                <iframe width="420" height="315"
+                        [src]="transform()">
+                </iframe>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <button routerLink="/list-lession"  class="btn btn-outline-info"  >
+          Trở về
+        </button>
+        <div class="question-button">
+          <button type="submit"   >
+            Cập nhật
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

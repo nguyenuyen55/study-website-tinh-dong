@@ -1,0 +1,63 @@
+<div class="schedule-container">
+    <div class="container">
+        <div class="schedule-selection">
+          <div class="mr-5">
+            <select class="custom-select" (change)="setValueNamHoc($event);handlerOnChangeLop()">
+              <option selected>Chọn năm học</option>
+              <option *ngFor="let namhoc of listNamHocs" value="{{namhoc.id}}">{{namhoc.year}}</option>
+            </select>
+          </div>
+            <div class="schedule-block ml-5">
+                <select class="form-select" aria-label="Default select example" (change)="setValueKhoi($event);handlerOnChangeLop()">
+                    <option selected>Chọn khối</option>
+                    <option value={{block.id}} *ngFor="let block of listBlock">{{block.ten || "Loading..."}}</option>
+                  </select>
+            </div>
+            <div class="schedule-class">
+                <select class="form-select" aria-label="Default select example" (change)="handlerOnChangeLopNew($event)">
+                    <option selected>Chọp lớp</option>
+                    <option value={{class.id}} *ngFor="let class of listClass">{{class.ten|| "Loading..."}}</option>
+                  </select>
+            </div>
+            <div class="schedule-search">
+<!--                <button  (click)="searchSchedule($event)" ><i class="bi bi-search"></i> Tìm </button>-->
+            </div>
+        </div>
+        <div class="schedule-content">
+            <table class="schedule-table table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">/</th>
+                    <th scope="col">Thứ 2</th>
+                    <th scope="col">Thứ 3</th>
+                    <th scope="col">Thứ 4</th>
+                    <th scope="col">Thứ 5</th>
+                    <th scope="col">Thứ 6</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Tiết 1</th>
+                    <td id="{{i.monHoc.id}}" *ngFor="let i of lesson1">{{i.monHoc.ten}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tiết 2</th>
+                    <td id="{{i.monHoc.id}}" *ngFor="let i of lesson2">{{i.monHoc.ten}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tiết 3</th>
+                    <td id="{{i.monHoc.id}}" *ngFor="let i of lesson3">{{i.monHoc.ten}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tiết 4</th>
+                    <td id="{{i.monHoc.id}}" *ngFor="let i of lesson4">{{i.monHoc.ten}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tiết 5</th>
+                    <td id="{{i.monHoc.id}}" *ngFor="let i of lesson5">{{i.monHoc.ten}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

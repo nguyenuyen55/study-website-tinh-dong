@@ -1,0 +1,121 @@
+<header *ngIf="href !== '/lession/*'" class="navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg container ">
+    <a class="navbar-brand" routerLink="home">
+      <img src={{img}} style="width: 80px" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <ul class="nav nav-tabs flex-grow-1 justify-content-center mx-5">
+        <li (click)='handlerClickNavbar($event)' class="nav-item ">
+          <a class="nav-link active" id="home" [ngClass]="{'active': active === 'home' }"
+             routerLink="home">Trang chủ</a>
+        </li>
+        <li (click)='handlerClickNavbar($event)' class="nav-item">
+          <a class="nav-link" id="lession" [ngClass]="{'active': active === 'lession'}" routerLink="lession">Bài
+            giảng</a>
+        </li>
+        <li (click)='handlerClickNavbar($event)' class="nav-item" *ngIf="!isAdmin && !isTeacher">
+          <a id="schedule" class="nav-link" [ngClass]="{'active': active === 'schedule'}" routerLink="schedule">Thời
+            khóa biểu</a>
+        </li>
+        <li (click)='handlerClickNavbar($event)' class="nav-item" *ngIf="!isAdmin && !isTeacher">
+          <a id="news" class="nav-link" (click)='handlerClickNavbar($event)' [ngClass]="{'active': active === 'news'}"
+             routerLink="news">Tin tức</a>
+        </li>
+        <li (click)='handlerClickNavbar($event)' class="nav-item" *ngIf="isTeacher">
+          <a class="nav-link" id="create-lession" (click)='handlerClickNavbar($event)' routerLink="/create-lession"
+             [ngClass]="{'active': active === 'create-lession'}">Đăng bài giảng</a>
+        </li>
+        <li (click)='handlerClickNavbar($event)'  class="nav-item" *ngIf="isTeacher">
+          <a class="nav-link" id="tabletime" [ngClass]="{'active': active === 'tabletime'}" routerLink="tabletime">Xem thời khoá biểu
+            lớp đang dạy</a>
+        </li>
+        <li (click)='handlerClickNavbar($event)' class="nav-item" *ngIf="isTeacher">
+          <a class="nav-link" id="list-student-teacher"  [ngClass]="{'active': active === 'list-student-teacher'}"
+             routerLink="list-student-teacher">DS học sinh đang dạy</a>
+        </li>
+        <li (click)='handlerClickNavbar($event)' class="nav-item" *ngIf="isTeacher">
+          <a class="nav-link" id="updatemark" [ngClass]="{'active': active === 'updatemark'}" routerLink="updatemark">Cập nhật điểm cho
+            học sinh</a>
+        </li>
+        <li (click)='handlerClickNavbar($event)' class="nav-item" *ngIf="!isAdmin && !isTeacher">
+          <a id="q&a" class="nav-link" [ngClass]="{'active': active === 'q&a'}" routerLink="q&a">Hỏi đáp</a>
+        </li>
+
+        <div (click)='handlerClickNavbar($event)' class="header-dr-search dropdown mr-2" *ngIf="!isAuth">
+          <button class=" mt-2 dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            Tìm kiếm
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+            <button (click)='handlerClickNavbar($event)' id="search-student"
+                    [ngClass]="{'active': active === 'search/student'}"  class="dropdown-item" type="button"
+                    routerLink="search/student">Học sinh
+            </button>
+            <button (click)='handlerClickNavbar($event)' id="search-teacher"
+                    [ngClass]="{'active': active === 'search/teacher'}" class="dropdown-item" type="button"
+                    routerLink="search/teacher">Giáo viên
+            </button>
+            <!--            <button class="dropdown-item" (click)="logout()" type="button">Đăng xuất</button>-->
+          </div>
+        </div>
+        <div class="dropdown mr-3 ml-3" *ngIf="isAdmin">
+          <button class=" mt-2 dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            Quản lí
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu4">
+            <button routerLink="/students" (click)='handlerClickNavbar($event)'
+                    [ngClass]="{'active': active === 'students'}" class="dropdown-item" id="students" type="button">Quản lí học sinh
+            </button>
+            <button class="dropdown-item" (click)='handlerClickNavbar($event)' routerLink="/teachers"
+                    [ngClass]="{'active': active === 'teachers'}" id="teachers" type="button">Quản lí giáo viên
+            </button>
+            <button class="dropdown-item" (click)='handlerClickNavbar($event)'
+                    [ngClass]="{'active': active === 'listmark'}" id="listmark" routerLink="/listmark" type="button">Quản lí điểm
+            </button>
+            <button class="dropdown-item" (click)='handlerClickNavbar($event)' routerLink="/classes"
+                    [ngClass]="{'active': active === 'classes'}" id="classes" type="button">Quản lí lớp
+            </button>
+            <button class="dropdown-item" (click)='handlerClickNavbar($event)' routerLink="/updateTimeTable"
+                    [ngClass]="{'active': active === 'updateTimeTable'}" id="updateTimeTable" type="button">Cập nhật thời khoá biểu
+            </button>
+            <button class="dropdown-item" type="button" (click)='handlerClickNavbar($event)'
+                    [ngClass]="{'active': active === 'list-new'}" id="list-new" routerLink="/list-new">Quản lí tin tức
+            </button>
+            <button class="dropdown-item" type="button" (click)='handlerClickNavbar($event)'
+                    [ngClass]="{'active': active === 'list-lession'}" id="list-lession" routerLink="/list-lession">Quản lí bài giảng
+            </button>
+            <!--            <button class="dropdown-item" (click)="logout()" type="button">Đăng xuất</button>-->
+          </div>
+        </div>
+        <div class="dropdown" *ngIf="isAdmin || isTeacher || isUser">
+          <button class=" mt-2 dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            Xin chào: {{username}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" (click)='handlerClickNavbar($event)'
+               [ngClass]="{'active': active === 'detailmark'}" routerLink="/detailmark" id="detailmark" *ngIf="isUser">Xem
+              điểm</button>
+            <button class="dropdown-item" (click)='handlerClickNavbar($event)' routerLink="/change-password"
+                    [ngClass]="{'active': active === 'change-password'}" id="change-password"
+                    type="button">Thay đổi mật khẩu
+            </button>
+            <button class="dropdown-item" (click)="logout()" type="button">Đăng xuất</button>
+          </div>
+        </div>
+
+      </ul>
+
+      <app-favorite-button [favorite]="favourite" routerLink="login"
+                           *ngIf="username==null">{{username || "Đăng nhập"}}</app-favorite-button>
+      <!--        <app-favorite-button [favorite]="favourite" *ngIf="username!='a'" >Đăng xuất</app-favorite-button>-->
+
+    </div>
+  </nav>
+</header>

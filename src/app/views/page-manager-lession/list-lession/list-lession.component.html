@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <!-- Content here -->
+  <p class="mt-lg-5">detailmark works!</p>
+  <p class="mt-lg-5" style="color: white">detailmark works!</p>
+<button class="btn btn-success" routerLink="/create-lession">Tạo mới</button>
+  <table class="table mt-4 table-hover rounded p-3 table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Tên Video</th>
+      <th scope="col">Mô tả</th>
+      <th scope="col">Chi tiết</th>
+      <th scope="col"> Sửa</th>
+      <th scope="col">Xoá</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let lession of lessions |paginate:{itemsPerPage:5,currentPage:p};let i =index">
+      <td>{{i + 1}}</td>
+      <td>{{lession.ten}}</td>
+      <td>{{lession.mota}}</td>
+      <td><a class="btn btn-warning" (click)="openDialogDetail(lession.id)"><i class="bi bi-eye"></i></a></td>
+      <td><a class="btn btn-info" routerLink="/update-lession/{{lession.id}}"><i class="bi bi-pencil-square"></i></a>
+      </td>
+      <td><a style="cursor: pointer" class="btn btn-danger" (click)="openDialogDelete(lession.id)"><i
+        class="bi bi-trash" style="color:white;"></i></a></td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination-controls class="text-right" *ngIf="checkPagination" [directionLinks]=true [autoHide]=true
+                       [responsive]=true (pageChange)="p=$event" previousLabel="Trước"
+                       nextLabel="Sau"></pagination-controls>
+</div>
