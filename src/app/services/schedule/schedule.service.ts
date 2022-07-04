@@ -9,9 +9,12 @@ import { ChiTietThoiKhoaBieu } from 'src/app/core/model/ChiTietThoiKhoaBieu';
 const httpOptions ={
   headers:new HttpHeaders({'Content-Type':'Application/json'})
 }
-const urlLop = 'http://localhost:8080/api/lop/khoi/';
-const urlKhoi = "http://localhost:8080/api/khoi";
-const urlTkb = "http://localhost:8080/api/tb?lop="
+// const urlLop = 'http://localhost:8080/api/lop/khoi/';
+// const urlKhoi = "http://localhost:8080/api/khoi";
+// const urlTkb = "http://localhost:8080/api/tb?lop="
+const urlLop = 'https://website-truong-tieu-hoc.herokuapp.com/api/lop/khoi/';
+const urlKhoi = "https://website-truong-tieu-hoc.herokuapp.com/api/khoi";
+const urlTkb = "https://website-truong-tieu-hoc.herokuapp.com/api/tb?lop="
 
 @Injectable({
   providedIn: 'root'

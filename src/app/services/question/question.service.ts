@@ -7,8 +7,10 @@ import { ChuDe } from 'src/app/core/model/ChuDe';
 const httpOptions ={
   headers:new HttpHeaders({'Content-Type':'Application/json'})
 }
-const apiUrl = 'http://localhost:8080/api/questions/chude';
-const postUrl = "http://localhost:8080/api/questions/create";
+// const apiUrl = 'http://localhost:8080/api/questions/chude';
+// const postUrl = "http://localhost:8080/api/questions/create";
+const apiUrl = 'https://website-truong-tieu-hoc.herokuapp.com/api/questions/chude';
+const postUrl = "https://website-truong-tieu-hoc.herokuapp.com/api/questions/create";
 
 @Injectable({
   providedIn: 'root'

@@ -8,7 +8,8 @@ import {HocSinhSearchDTO} from "../../core/dto/HocSinhSearchDTO";
 const httpOptions ={
   headers:new HttpHeaders({'Content-Type':'Application/json'})
 }
-const urlSearchId = 'http://localhost:8080/api/student/search?name=';
+// const urlSearchId = 'http://localhost:8080/api/student/search?name=';
+const urlSearchId = 'https://website-truong-tieu-hoc.herokuapp.com/api/student/search?name=';
 
 @Injectable({
   providedIn: 'root'

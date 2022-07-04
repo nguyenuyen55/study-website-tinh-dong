@@ -9,7 +9,8 @@ import {ImageDTO} from "../../core/dto/imageDTO";
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'Application/json'})
 }
-const apiUrl = 'http://localhost:8080/api/listNew';
+// const apiUrl = 'http://localhost:8080/api/listNew';
+const apiUrl = 'https://website-truong-tieu-hoc.herokuapp.com/api/listNew';
 
 @Injectable({
   providedIn: 'root'
